@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maytoni_product_store/data/wishlist_items.dart';
 import 'package:maytoni_product_store/features/home/ui/product_tile_widget.dart';
 import 'package:maytoni_product_store/features/wishlist/ui/wishlist_page.dart';
 
@@ -89,8 +90,12 @@ class _HomeState extends State<Home> {
                 itemCount: successState.products.length,
                 itemBuilder: (context, index) {
                   return ProductTileWidget(
-                      homeBloc: homeBloc,
-                      maytoniDataModel: successState.products[index]);
+                    homeBloc: homeBloc,
+                    maytoniDataModel: successState.products[index],
+                    icon: wishlistItems.contains(successState.products[index])
+                        ? Icons.favorite
+                        : Icons.favorite_border_outlined,
+                  );
                 },
               ),
             );

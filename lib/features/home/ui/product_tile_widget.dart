@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:maytoni_product_store/data/wishlist_items.dart';
 import 'package:maytoni_product_store/features/home/bloc/home_bloc.dart';
 import 'package:maytoni_product_store/features/home/models/maytoni_data_model.dart';
 
 class ProductTileWidget extends StatelessWidget {
+  const ProductTileWidget({
+    super.key,
+    required this.maytoniDataModel,
+    required this.homeBloc,
+    required this.icon,
+  });
+
   final MaytoniDataModel maytoniDataModel;
   final HomeBloc homeBloc;
-  const ProductTileWidget(
-      {super.key, required this.maytoniDataModel, required this.homeBloc});
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -28,7 +35,7 @@ class ProductTileWidget extends StatelessWidget {
           ),
           Text(
             maytoniDataModel.name,
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             textAlign: TextAlign.left,
           ),
           Text(
@@ -38,29 +45,30 @@ class ProductTileWidget extends StatelessWidget {
             children: [
               Text(
                 maytoniDataModel.height.toString(),
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
-              Icon(Icons.height),
-              SizedBox(width: 10),
+              const Icon(Icons.height),
+              const SizedBox(width: 10),
               Text(
                 maytoniDataModel.width.toString(),
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
-              Icon(Icons.height),
-              SizedBox(width: 10),
+              const Icon(Icons.height),
+              const SizedBox(width: 10),
               Text(
                 maytoniDataModel.length.toString(),
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
-              Icon(Icons.height),
+              const Icon(Icons.height),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '\$' + maytoniDataModel.price.toString(),
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                '\$${maytoniDataModel.price}',
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               Row(
                 children: [
@@ -69,7 +77,7 @@ class ProductTileWidget extends StatelessWidget {
                       homeBloc.add(HomeProductWishlistButtonClickedEvent(
                           clickedProduct: maytoniDataModel));
                     },
-                    icon: const Icon(Icons.favorite_border_outlined),
+                    icon: Icon(icon),
                     color: Colors.black,
                   ),
                   IconButton(
@@ -81,7 +89,7 @@ class ProductTileWidget extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ],

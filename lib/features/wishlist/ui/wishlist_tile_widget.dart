@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:maytoni_product_store/features/cart/bloc/cart_bloc.dart';
-
 import 'package:maytoni_product_store/features/home/models/maytoni_data_model.dart';
+import 'package:maytoni_product_store/features/wishlist/bloc/wishlist_bloc.dart';
 
-class CartTileWidget extends StatelessWidget {
+class WishlistTileWidget extends StatelessWidget {
   final MaytoniDataModel maytoniDataModel;
-  final CartBloc cartBloc;
-  const CartTileWidget(
-      {super.key, required this.maytoniDataModel, required this.cartBloc});
+  final WishlistBloc wishlistBloc;
+  const WishlistTileWidget(
+      {super.key, required this.maytoniDataModel, required this.wishlistBloc});
 
   @override
   Widget build(BuildContext context) {
@@ -60,15 +59,15 @@ class CartTileWidget extends StatelessWidget {
                 // homeBloc.add(HomeProductWishlistButtonClickedEvent(
                 //     clickedProduct: maytoniDataModel));
               },
-              icon: const Icon(Icons.favorite_border_outlined),
+              icon: const Icon(Icons.shopping_bag_outlined),
               color: Colors.black,
             ),
             IconButton(
               onPressed: () {
-                cartBloc.add(CartRemoveFromCartEvent(
+                wishlistBloc.add(WishlistRemoveFromWishlistEvent(
                     maytoniDataModel: maytoniDataModel));
               },
-              icon: const Icon(Icons.remove_circle_outline),
+              icon: const Icon(Icons.favorite),
               color: Colors.black,
             ),
           ],
