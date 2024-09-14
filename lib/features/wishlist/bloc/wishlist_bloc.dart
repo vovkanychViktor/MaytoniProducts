@@ -17,12 +17,12 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
 
   FutureOr<void> wishlistInitialEvent(
       WishlistInitialEvent event, Emitter<WishlistState> emit) {
-    emit(WishlistSuccessState(wishlistItems: wishlistItems));
+    emit(WishlistSuccessState(wishlistItems: wishlistItemsData));
   }
 
   FutureOr<void> wishlistRemoveFromWishlistEvent(
       WishlistRemoveFromWishlistEvent event, Emitter<WishlistState> emit) {
-    wishlistItems.remove(event.maytoniDataModel);
-    emit(WishlistSuccessState(wishlistItems: wishlistItems));
+    wishlistItemsData.remove(event.maytoniDataModel);
+    emit(WishlistSuccessState(wishlistItems: wishlistItemsData));
   }
 }
