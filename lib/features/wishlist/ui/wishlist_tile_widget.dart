@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:maytoni_product_store/features/home/models/maytoni_data_model.dart';
+import 'package:maytoni_product_store/data/models/maytoni_data_model.dart';
 import 'package:maytoni_product_store/features/wishlist/bloc/wishlist_bloc.dart';
 
 class WishlistTileWidget extends StatelessWidget {

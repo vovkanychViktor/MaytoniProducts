@@ -5,8 +5,6 @@ import 'package:maytoni_product_store/features/home_page/ui/home_page.dart';
 import 'package:maytoni_product_store/features/wishlist/bloc/wishlist_bloc.dart';
 
 import 'features/cart/bloc/cart_bloc.dart';
-import 'features/home/bloc/home_bloc.dart';
-import 'features/home/ui/home_page.dart';
 
 void main() {
   runApp(const MyApp());

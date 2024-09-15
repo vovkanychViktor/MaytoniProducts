@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:maytoni_product_store/data/wishlist_items.dart';
+import 'package:maytoni_product_store/data/source/wishlist_items.dart';
 import 'package:maytoni_product_store/features/wishlist/bloc/wishlist_bloc.dart';
 import 'package:maytoni_product_store/features/wishlist/ui/wishlist_tile_widget.dart';
 
