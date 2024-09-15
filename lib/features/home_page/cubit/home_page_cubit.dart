@@ -1,8 +1,10 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:maytoni_product_store/data/maytoni_data.dart';
 import 'package:maytoni_product_store/data/wishlist_items.dart';
 import 'package:maytoni_product_store/features/home/models/maytoni_data_model.dart';
+import 'package:maytoni_product_store/features/wishlist/ui/wishlist_page.dart';
 
 part 'home_page_state.dart';
 
@@ -13,7 +15,6 @@ class HomePageCubit extends Cubit<HomePageState> {
           products: [],
           wishList: [],
         )) {
-    // Call your initialization function here
     _init();
   }
 
@@ -43,8 +44,23 @@ class HomePageCubit extends Cubit<HomePageState> {
   }
 
   void addToWishList(final MaytoniDataModel liked) {
-    final updatedWithList = List<MaytoniDataModel>.from(state.wishList)
-      ..add(liked);
+    final updatedWithList = List<MaytoniDataModel>.from(state.wishList);
+    if (updatedWithList.any((item) => item.id == liked.id)) {
+      updatedWithList.removeWhere((e) => e.id == liked.id);
+    } else {
+      updatedWithList.add(liked);
+    }
+
     emit(state.copyWith(wishList: updatedWithList));
+    wishlistItemsData = updatedWithList;
+  }
+
+  Future<void> moveToWishListPage(final BuildContext context) async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const Wishlist(),
+      ),
+    ).whenComplete(() => _init());
   }
 }

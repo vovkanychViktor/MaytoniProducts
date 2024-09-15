@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:maytoni_product_store/data/wishlist_items.dart';
 import 'package:maytoni_product_store/features/home/models/maytoni_data_model.dart';
 import 'package:meta/meta.dart';

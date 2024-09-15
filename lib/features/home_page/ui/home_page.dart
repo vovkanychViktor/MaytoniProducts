@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:maytoni_product_store/features/cart/ui/cart_page.dart';
 import 'package:maytoni_product_store/features/home_page/cubit/home_page_cubit.dart';
 import 'package:maytoni_product_store/features/home_page/ui/product_item.dart';
-import 'package:maytoni_product_store/features/wishlist/ui/wishlist_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -19,14 +18,8 @@ class HomePage extends StatelessWidget {
             ),
             actions: [
               IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const Wishlist(),
-                    ),
-                  );
-                },
+                onPressed: () =>
+                    context.read<HomePageCubit>().moveToWishListPage(context),
                 icon: const Icon(Icons.favorite_border_outlined),
                 color: Colors.white,
               ),
@@ -49,7 +42,8 @@ class HomePage extends StatelessWidget {
             itemCount: state.products.length,
             itemBuilder: (context, index) {
               final product = state.products[index];
-              final isInWishlist = state.wishList.contains(product);
+              final isInWishlist =
+                  state.wishList.any((item) => item.id == product.id);
               return ProductItem(
                 maytoniDataModel: product,
                 onAddToCartTapped: () {},
