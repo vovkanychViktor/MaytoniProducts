@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:maytoni_product_store/data/cart_items.dart';
-import 'package:maytoni_product_store/features/home/models/maytoni_data_model.dart';
+import 'package:maytoni_product_store/data/source/cart_items.dart';
+import 'package:maytoni_product_store/data/models/maytoni_data_model.dart';
 import 'package:meta/meta.dart';
 
 part 'cart_event.dart';
